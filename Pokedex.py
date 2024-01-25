@@ -6,15 +6,15 @@
 #
 #
 import json
-# import urllib.request as ul
+import urllib.request as ul
 import random
 
-#Chargement du json:
-#JSON=ul.urlopen("https://pokebuildapi.fr/api/v1/pokemon")
+# #Chargement du json:
+# JSON=ul.urlopen("https://pokebuildapi.fr/api/v1/pokemon")
 
-#Conversion du json en dictionnaire:
-#data=json.loads(JSON.read())
-#with open('pokedex.json', 'w', encoding='utf-8') as f:
+# # Conversion du json en dictionnaire:
+# data=json.loads(JSON.read())
+# with open('pokedex.json', 'w', encoding='Utf-8') as f:
 #    json.dump(data, f, indent=2)
 
 #print(data[0]['name'])
@@ -35,14 +35,14 @@ class Pokedex():
         #création du pokedex du joueur 
        
         self.pokedex_joueur = []
-
+        print(self.pokedex_joueur)
         #Indice[0] = Null       
         self.pokedex_joueur.append("Null")
-        
+        print(self.pokedex_joueur)
         # with open('pokedex_joueur.json', 'a', encoding='utf-8') as f:
         #     json.dump(self.pokedex_joueur, f, indent=2 )
         
-    
+        
     def pokemon_aleatoire (self) :
         '''Choisi un pokemon aléatoirement dans l'api avec toutes ces infos '''
         
@@ -58,10 +58,11 @@ class Pokedex():
     
     def ajout_pokemon_rencontrer(self ):
         ''' Méthode permettant d'ajouter un pokemon dans pokedex_joueur.'''
-
+        print(self.pokedex_joueur)
         #Ajout du pokemon dans le pokedex        
-        with open('pokedex_joueur.json', 'a', encoding='utf-8') as f:
+        with open('pokedex_joueur.json', 'w', encoding='utf-8') as f:
             self.pokedex_joueur.append(self.pokemon_aleatoire)
+            print(self.pokedex_joueur)
             json.dump(self.pokedex_joueur, f, indent=2)
         
     
@@ -75,7 +76,7 @@ class Pokedex():
 pokedex=Pokedex()
 
 pokedex.pokedex_vide()
-pokedex.pokemon_aleatoire() 
+pokedex.pokemon_aleatoire()
 pokedex.ajout_pokemon_rencontrer()
 
 
