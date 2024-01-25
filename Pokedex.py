@@ -6,15 +6,15 @@
 #
 #
 import json
-# import urllib.request as ul
+import urllib.request as ul
 import random
 import os 
 #Chargement du json:
 #JSON=ul.urlopen("https://pokebuildapi.fr/api/v1/pokemon")
 
-#Conversion du json en dictionnaire:
-#data=json.loads(JSON.read())
-#with open('pokedex.json', 'w', encoding='utf-8') as f:
+# # Conversion du json en dictionnaire:
+# data=json.loads(JSON.read())
+# with open('pokedex.json', 'w', encoding='Utf-8') as f:
 #    json.dump(data, f, indent=2)
 
 #print(data[0]['name'])
