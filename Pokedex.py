@@ -84,6 +84,7 @@ class Pokedex():
             #Conversion du dictionnaire en Json
             json.dump(self.pokedex_joueur, f, indent=2)
         
+        # def suppression_pokedex_joueur
     
 pokedex=Pokedex()
 
