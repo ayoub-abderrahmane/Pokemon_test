@@ -47,7 +47,7 @@ class Pokedex():
         if self.pokedex_joueur_existe() == False:
         
             #Création du pokedex du joueur 
-            self.pokedex_joueur=[]
+            self.pokedex_joueur = []
 
             #Indice [0] = None
             with open('pokedex_joueur.json', 'a', encoding='utf-8') as f:
@@ -75,7 +75,7 @@ class Pokedex():
         with open('pokedex_joueur.json', 'r+', encoding='utf-8') as f:
             
             #Conversion du json en Dictionnaire
-            self.pokedex_joueur= json.load(f)
+            self.pokedex_joueur = json.load(f)
             
             #Ajout du pokemon rencontré dans le dictionnaire pokedex_joueur
             self.pokedex_joueur.append(self.pokemon_aleatoire_)
@@ -84,7 +84,10 @@ class Pokedex():
             #Conversion du dictionnaire en Json
             json.dump(self.pokedex_joueur, f, indent=2)
         
-        # def suppression_pokedex_joueur
+        
+        # def suppression_pokedex_joueur(self):
+        #     if
+            
     
 pokedex=Pokedex()
 
