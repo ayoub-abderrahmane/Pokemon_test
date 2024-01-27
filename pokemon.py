@@ -42,11 +42,11 @@ class Pokemon(Pokedex):
             
             else:
                
-                self.nom_pokemon1 = self.pokedex_joueur[Total_pokedex]['name']
-                self.image_pokemon1 = self.pokedex_joueur[Total_pokedex]['image']
-                self.pv_pokemon1 = self.pokedex_joueur[Total_pokedex]['stats']['HP']
-                self.attaque_pokemon1 = self.pokedex_joueur[Total_pokedex]['stats']['attack']
-                self.defense_pokemon1 = self.pokedex_joueur[Total_pokedex]['stats']['defense']
+                self.nom_pokemon2 = self.pokedex_joueur[Total_pokedex]['name']
+                self.image_pokemon2 = self.pokedex_joueur[Total_pokedex]['image']
+                self.pv_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['HP']
+                self.attaque_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['attack']
+                self.defense_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['defense']
                 
                 break
     
