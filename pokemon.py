@@ -7,10 +7,12 @@ class Pokemon(Pokedex):
         super().__init__()        
         super().ajout_pokemon_rencontrer() 
         
+
         self.pokedex_joueur = []
         with open('pokedex_joueur.json', 'r', encoding='utf-8') as f:
             self.pokedex_joueur = json.load(f)
-                
+       
+               
 
     def pokemon1(self):
         '''Méthode qui donne les infos principal du pokemon_du_joueur'''
@@ -21,7 +23,7 @@ class Pokemon(Pokedex):
         self.attaque_pokemon1 = self.pokedex_joueur[1]['stats']['attack']
         self.defence_pokemon1 = self.pokedex_joueur[1]['stats']['defense']
         self.type_pokemon1 = self.pokedex_joueur[1]['apiTypes'][0]['name']
-    
+       
     def pokemon2(self):
         '''Méthode qui donne les infos principal de l'adversaire:
             Si nombre total de pokemon dans le pokedex est égale à 1:
@@ -53,7 +55,6 @@ class Pokemon(Pokedex):
     
         
 pokemon=Pokemon()
-
 
 
     
