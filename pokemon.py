@@ -10,7 +10,7 @@ class Pokemon(Pokedex):
         self.pokedex_joueur = []
         with open('pokedex_joueur.json', 'r', encoding='utf-8') as f:
             self.pokedex_joueur = json.load(f)
-        
+                
 
     def pokemon1(self):
         '''Méthode qui donne les infos principal du pokemon_du_joueur'''
@@ -19,7 +19,8 @@ class Pokemon(Pokedex):
         self.image_pokemon1 = self.pokedex_joueur[1]['image']
         self.pv_pokemon1 = self.pokedex_joueur[1]['stats']['HP']
         self.attaque_pokemon1 = self.pokedex_joueur[1]['stats']['attack']
-        self.defense_pokemon1 = self.pokedex_joueur[1]['stats']['defense']
+        self.defence_pokemon1 = self.pokedex_joueur[1]['stats']['defense']
+        self.type_pokemon1 = self.pokedex_joueur[1]['apiTypes'][0]['name']
     
     def pokemon2(self):
         '''Méthode qui donne les infos principal de l'adversaire:
@@ -46,8 +47,8 @@ class Pokemon(Pokedex):
                 self.image_pokemon2 = self.pokedex_joueur[Total_pokedex]['image']
                 self.pv_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['HP']
                 self.attaque_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['attack']
-                self.defense_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['defense']
-                
+                self.type_pokemon2 = self.pokedex_joueur[Total_pokedex]['apiTypes'][0]['name']
+                self.defence_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['defense']
                 break
     
         

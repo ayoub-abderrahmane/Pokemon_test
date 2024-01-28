@@ -64,7 +64,7 @@ class Pokedex:
         self.nb_aleatoire = random.randint(1, self.total_pokemon)
 
         #type du pokemon 
-        self.type= self.data[self.nb_aleatoire]['apiTypes'][0]['name']
+        self.type = self.data[self.nb_aleatoire]['apiTypes'][0]['name']
 
 
     def ajout_pokemon_rencontrer(self):
@@ -77,7 +77,10 @@ class Pokedex:
             self.pokemon_aleatoire()
             
             #Filtre
-            if self.type == "Eau" or self.type == "Feu" or self.type == "Sol" or self.type == "Normal":
+            if     self.type == "Eau" \
+                or self.type == "Feu" \
+                or self.type == "Sol" \
+                or self.type == "Normal":
             
                 # Pokemon aléatoire dans le pokedex avec toutes ces infos
                 self.pokemon_aleatoire_ = self.data[self.nb_aleatoire]   
