@@ -34,7 +34,7 @@ class Pokemon(Pokedex):
            
             #Nombre total de pokemon dans pokedex
             Total_pokedex = len(self.pokedex_joueur) - 1
-            
+          
 
             if Total_pokedex == 1:
                 #on ajoute un pokemon dans le pokedex
@@ -47,12 +47,11 @@ class Pokemon(Pokedex):
                 self.pv_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['HP']
                 self.attaque_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['attack']
                 self.defense_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['defense']
-                
                 break
     
         
 pokemon=Pokemon()
-
+pokemon.pokemon2()
 
 
     
