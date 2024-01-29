@@ -7,9 +7,7 @@ class Combat(Pokemon):
         super().__init__()
         super().pokemon1()
         super().pokemon2()
-        self.degat1 = []
-        self.degat2 = []
-    
+        
 
 
         
@@ -79,59 +77,61 @@ class Combat(Pokemon):
     def attaque(self,nb):
                 
         #Arrondi l'attaque au nombre superieur
-        attaque_pokemon1 = round(self.Puissance(1))      
+        self.attaque_pokemon1 = round(self.Puissance(1))      
        
-        if nb == 0:    
-            self.pv_pokemon2_ = self.pv_pokemon2 - round(attaque_pokemon1/self.defence_pokemon2) 
+        # if nb == 0:    
+        #     self.pv_pokemon2_ = self.pv_pokemon2 - round(attaque_pokemon1/self.defence_pokemon2) 
             
-            self.pv_restant2 =  self.pv_pokemon2 - self.pv_pokemon2_
+        #     self.pv_restant2 =  self.pv_pokemon2 - self.pv_pokemon2_
             
-            self.degat2.append(self.pv_restant2)
+        #     self.degat2.append(self.pv_restant2)
         
-            print(self.degat2)
-            print(f"{self.nom_pokemon2} a perdu {self.pv_pokemon2_} pv.{self.pv_restant2} ")
+        #     print(self.degat2)
+        #     print(f"{self.nom_pokemon2} a perdu {self.pv_pokemon2_} pv.{self.pv_restant2} ")
         
-        else:
-            self.pv_pokemon2_= self.degat2[nb-1] - round(attaque_pokemon1/self.defence_pokemon2) 
-            
-            self.pv_restant2 =  self.pv_pokemon2 - self.pv_pokemon2_
-            
-            self.degat2.append(self.pv_restant2)
-            print(self.degat2)
-            print(f"{self.nom_pokemon2} a perdu {self.pv_pokemon2_} pv.{self.pv_restant2} ")
-   
+        # else:
+        self.pv_pokemon2_= nb - round(self.attaque_pokemon1/self.defence_pokemon2) 
+        
+        self.pv_restant2 =  self.pv_pokemon2 - self.pv_pokemon2_
+        
+
+        
+        print(self.degat2)
+        print(f"{self.nom_pokemon2} a perdu {self.pv_pokemon2_} pv.{self.pv_restant2} ")
+        return self.pv_restant2
     
     def contre_attaque(self,nb):
         #sinon le script prend l'attaque en fonction des deux type et le multiplier a la defense de l'ennemi (c'est un nombre inferieur a 1)
         
         #Arrondi l'attaque au nombre superieur
         attaque_pokemon2 = round(self.Puissance(2))       
-        if nb == 0:    
-            self.pv_pokemon1_ = self.pv_pokemon1 - round(attaque_pokemon2/self.defence_pokemon1) 
+        # if nb == 0:    
+        #     self.pv_pokemon1_ = self.pv_pokemon1 - round(attaque_pokemon2/self.defence_pokemon1) 
             
-            self.pv_restant1 =  self.pv_pokemon1 - self.pv_pokemon1_
+        #     self.pv_restant1 =  self.pv_pokemon1 - self.pv_pokemon1_
             
-            self.degat1.append(self.pv_restant1)
+        #     self.degat1.append(self.pv_restant1)
         
-            print(self.degat1)
-            print(f"{self.nom_pokemon1} a perdu {self.pv_pokemon1_} pv.{self.pv_restant1} ")
-        else:
-            print(nb)
-            self.pv_pokemon1_ = self.degat1[nb-1] - round(attaque_pokemon2/self.defence_pokemon1) 
-            
-            self.pv_restant1 =  self.pv_pokemon1 - self.pv_pokemon1_
-            
-            self.degat1.append(self.pv_restant1)
-            print(self.degat1)
-            print(f"{self.nom_pokemon1} a perdu {self.pv_pokemon1_} pv.{self.pv_restant1} ")
-   
-    def gagnant(self,i):
+        #     print(self.degat1)
+        #     print(f"{self.nom_pokemon1} a perdu {self.pv_pokemon1_} pv.{self.pv_restant1} ")
+        # else:
+        #     print(nb)
+        self.pv_pokemon1_ = nb - round(attaque_pokemon2/self.defence_pokemon1) 
+        
+        self.pv_restant1 =  self.pv_pokemon1 - self.pv_pokemon1_
+        
+        
+        print(self.degat1)
+        print(f"{self.nom_pokemon1} a perdu {self.pv_pokemon1_} pv.{self.pv_restant1} ")
+        return self.pv_restant1
+    
+    def gagnant(self):
         #Methode qui regard a chaque fin de tour si l'un des pokemon n'a plus de pv pour annoncer le gagnant et le perdant
-        if self.degat1[i] <= 0:
+        if self.pv_restant1 <= 0:
             print(f"{self.nom_pokemon2} a gagné.")
             print(f"vous avez perdu :( ")
             return True
-        elif self.degat2[i] <= 0:
+        elif self.pv_restant2 <= 0:
             print(f"vous avez gagné ! :)")
             print(f"{self.nom_pokemon1} a perdu. ")
             return True
@@ -139,24 +139,53 @@ class Combat(Pokemon):
     
     
     def Fight(self) :
+        
         i=0
-        while True:
-            print (i) 
-            if i % 2 == 0:
-                print (i)  
+        self.pv_restant1 = self.pv_pokemon1
+        self.pv_restant2 = self.pv_pokemon2
+        while True :
+            
+            print( f" joueur1 reste{self.pv_restant1}pv ")
+            print(f" joueur2 reste{self.pv_restant2}pv ")
+            print(f"tour {i}")
+            if self.gagnant() == True or i == 100:
+                break
+            
+            elif i % 2 == 0 :
+               
+                
                 if self.attaqueLouper() == True :
                     print('attaque louper')
-                    self.contre_attaque(i)
-                self.attaque(i)
+                    # self.attaque_pokemon1 = round(self.Puissance(1)) 
+                    self.pv_pokemon2_ =  round(self.Puissance(1)/self.defence_pokemon2) - self.pv_restant2 
+                    self.pv_restant2 += self.pv_pokemon2_
+                
+                # self.attaque_pokemon2 = round(self.Puissance(2))                    
+                self.pv_pokemon1_ =  round(self.Puissance(2)/self.defence_pokemon1) - self.pv_restant1                    
+                print('tout est ok')
+                self.pv_restant1 += self.pv_pokemon1_
+                print(f"il te reste ")
+                 
             else:
                 if self.attaqueLouper() == True :
                     print('attaque louper')
-                    self.attaque(i)
-                self.contre_attaque(i)
-                break
-            # self.gagnant(i)    
+                    
+                    print(f"la puissance{self.Puissance(2)}")                    
+                    self.pv_pokemon1_ = self.pv_restant1 - round(self.Puissance(2)/self.defence_pokemon1)                     
+
+                    self.pv_restant1 += self.pv_pokemon1_
+                
+                
+                print(f"la puissance pok 1 {self.Puissance(1)}") 
+                self.pv_pokemon2_ =  self.pv_restant2 - round(self.Puissance(1)/self.defence_pokemon2) 
+                print('tout est ok 2')
+                self.pv_restant2 += self.pv_pokemon2_
+                
+                
+               
             i = i+1
-            print(i)
+            
+            
                
             
         
