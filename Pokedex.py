@@ -64,7 +64,7 @@ class Pokedex:
         self.nb_aleatoire = random.randint(1, self.total_pokemon)
 
         #type du pokemon 
-        self.type= self.data[self.nb_aleatoire]['apiTypes'][0]['name']
+        self.type = self.data[self.nb_aleatoire]['apiTypes'][0]['name']
 
 
     def ajout_pokemon_rencontrer(self):
@@ -77,25 +77,26 @@ class Pokedex:
             self.pokemon_aleatoire()
             
             #Filtre
-            if self.type == "Eau" or self.type == "Feu" or self.type == "Sol" or self.type == "Normal":
-            
-                # Pokemon aléatoire dans le pokedex avec toutes ces infos
-                self.pokemon_aleatoire_ = self.data[self.nb_aleatoire]   
-                            
-                #Ajout du pokemon dans le pokedex    
-                with open('pokedex_joueur.json', 'r+', encoding='utf-8') as f:
-                    
-                    #Conversion du json en Dictionnaire
-                    self.pokedex_joueur = json.load(f)
-                
-                    #Ajout du pokemon rencontré dans le dictionnaire pokedex_joueur
-                    self.pokedex_joueur.append(self.pokemon_aleatoire_)
-                    f.seek(0)
+            match self.type :
+                case "Eau"|"Feu"|"Sol"|"Normal":
 
-                    #Conversion du dictionnaire en Json
-                    json.dump(self.pokedex_joueur, f, indent=2)    
-                                            
-                    break         
+                    # Pokemon aléatoire dans le pokedex avec toutes ces infos
+                    self.pokemon_aleatoire_ = self.data[self.nb_aleatoire]   
+                                
+                    #Ajout du pokemon dans le pokedex    
+                    with open('pokedex_joueur.json', 'r+', encoding='utf-8') as f:
+                        
+                        #Conversion du json en Dictionnaire
+                        self.pokedex_joueur = json.load(f)
+                    
+                        #Ajout du pokemon rencontré dans le dictionnaire pokedex_joueur
+                        self.pokedex_joueur.append(self.pokemon_aleatoire_)
+                        f.seek(0)
+
+                        #Conversion du dictionnaire en Json
+                        json.dump(self.pokedex_joueur, f, indent=2)    
+                                                
+                        break         
 
 
 pokedex=Pokedex()
