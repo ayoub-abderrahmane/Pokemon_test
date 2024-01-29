@@ -51,7 +51,7 @@ class Pokemon(Pokedex):
     
         
 pokemon=Pokemon()
-pokemon.pokemon2()
+
 
 
     
