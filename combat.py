@@ -90,7 +90,8 @@ class Combat(Pokemon):
         #     print(f"{self.nom_pokemon2} a perdu {self.pv_pokemon2_} pv.{self.pv_restant2} ")
         
         # else:
-        self.pv_pokemon2_= nb - round(self.attaque_pokemon1/self.defence_pokemon2) 
+        pv_en_moins= nb - round(self.attaque_pokemon1/self.defence_pokemon2) 
+        self.pv_pokemon2_=- pv_en_moins
         
         self.pv_restant2 =  self.pv_pokemon2 - self.pv_pokemon2_
         
