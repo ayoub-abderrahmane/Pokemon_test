@@ -1,16 +1,18 @@
 import random
 from pokemon import Pokemon
+CONST=Pokemon.pv_pokemon2
 
 class Combat(Pokemon):
-
-    def __init__(self):
+    
+    
+    def __init__(self, pok1, pok2):
         super().__init__()
         super().pokemon1()
         super().pokemon2()
         
-
-
-        
+        self.__pv_restant1 = self.pv_pokemon1
+        print(1)
+    
     def Puissance(self,pokemon): 
         '''Méthode qui augmente ou diminue la puissance d'attaque du pokemon1 : 
             pokemon1 -> pokemon du joueur
@@ -56,7 +58,6 @@ class Combat(Pokemon):
                     return self.attaque_pokemon2_
 
         elif self.type_pokemon1 == 'Normal':
-            
             self.attaque_pokemon2_ = self.attaque_pokemon2 * 0.75
             self.attaque_pokemon1_ = self.attaque_pokemon1 * 0.75
             match pokemon :
@@ -74,59 +75,50 @@ class Combat(Pokemon):
             return True
     
     
-    def attaque(self,nb):
+    def attaque(self):
                 
         #Arrondi l'attaque au nombre superieur
         self.attaque_pokemon1 = round(self.Puissance(1))      
+        self.pv_restant2 = self.__pv_max_restant2
        
-        # if nb == 0:    
-        #     self.pv_pokemon2_ = self.pv_pokemon2 - round(attaque_pokemon1/self.defence_pokemon2) 
-            
-        #     self.pv_restant2 =  self.pv_pokemon2 - self.pv_pokemon2_
-            
-        #     self.degat2.append(self.pv_restant2)
+        self.degat_subit = round(self.attaque_pokemon1/self.defence_pokemon2)+10 
         
-        #     print(self.degat2)
-        #     print(f"{self.nom_pokemon2} a perdu {self.pv_pokemon2_} pv.{self.pv_restant2} ")
-        
-        # else:
-        self.pv_pokemon2_= nb - round(self.attaque_pokemon1/self.defence_pokemon2) 
-        
-        self.pv_restant2 =  self.pv_pokemon2 - self.pv_pokemon2_
+        self.pv_restant2 = self.pv_restant2 - self.degat_subit
         
 
         
-        print(self.degat2)
-        print(f"{self.nom_pokemon2} a perdu {self.pv_pokemon2_} pv.{self.pv_restant2} ")
-        return self.pv_restant2
-    
-    def contre_attaque(self,nb):
-        #sinon le script prend l'attaque en fonction des deux type et le multiplier a la defense de l'ennemi (c'est un nombre inferieur a 1)
+        print(self.degat_subit)
+        print(f"{self.nom_pokemon2} a perdu {self.degat_subit} pv.{self.pv_restant2} ")
+       
+    # def contre_attaque(self):
+    #     #sinon le script prend l'attaque en fonction des deux type et le multiplier a la defense de l'ennemi (c'est un nombre inferieur a 1)
         
-        #Arrondi l'attaque au nombre superieur
-        attaque_pokemon2 = round(self.Puissance(2))       
-        # if nb == 0:    
-        #     self.pv_pokemon1_ = self.pv_pokemon1 - round(attaque_pokemon2/self.defence_pokemon1) 
+    #     #Arrondi l'attaque au nombre superieur
+    #     attaque_pokemon2 = round(self.Puissance(2))       
+    #     # if == 0:    
+    #     #     self.pv_pokemon1_ = self.pv_pokemon1 - round(attaque_pokemon2/self.defence_pokemon1) 
             
-        #     self.pv_restant1 =  self.pv_pokemon1 - self.pv_pokemon1_
+    #     #     self.pv_restant1 =  self.pv_pokemon1 - self.pv_pokemon1_
             
-        #     self.degat1.append(self.pv_restant1)
+    #     #     self.degat1.append(self.pv_restant1)
         
-        #     print(self.degat1)
-        #     print(f"{self.nom_pokemon1} a perdu {self.pv_pokemon1_} pv.{self.pv_restant1} ")
-        # else:
-        #     print(nb)
-        self.pv_pokemon1_ = nb - round(attaque_pokemon2/self.defence_pokemon1) 
+    #     #     print(self.degat1)
+    #     #     print(f"{self.nom_pokemon1} a perdu {self.pv_pokemon1_} pv.{self.pv_restant1} ")
+    #     # else:
+    #     #     print(nb)
+    #     self.pv_pokemon1_ = nb - round(attaque_pokemon2/self.defence_pokemon1) 
         
-        self.pv_restant1 =  self.pv_pokemon1 - self.pv_pokemon1_
+    #     self.pv_restant1 =  self.pv_pokemon1 - self.pv_pokemon1_
         
         
-        print(self.degat1)
-        print(f"{self.nom_pokemon1} a perdu {self.pv_pokemon1_} pv.{self.pv_restant1} ")
-        return self.pv_restant1
+    #     print(self.degat1)
+    #     print(f"{self.nom_pokemon1} a perdu {self.pv_pokemon1_} pv.{self.pv_restant1} ")
+    #     return self.pv_restant1
     
     def gagnant(self):
-        #Methode qui regard a chaque fin de tour si l'un des pokemon n'a plus de pv pour annoncer le gagnant et le perdant
+        '''Methode qui regard à chaque fin de tour si l'un des pokemons n'a plus de pv 
+            pour annoncer le gagnant et le perdant.
+        '''
         if self.pv_restant1 <= 0:
             print(f"{self.nom_pokemon2} a gagné.")
             print(f"vous avez perdu :( ")
@@ -141,8 +133,8 @@ class Combat(Pokemon):
     def Fight(self) :
         
         i=0
-        self.pv_restant1 = self.pv_pokemon1
-        self.pv_restant2 = self.pv_pokemon2
+        
+        print(self.pv_restant1)
         while True :
             
             print( f" joueur1 reste{self.pv_restant1}pv ")
@@ -184,14 +176,10 @@ class Combat(Pokemon):
                 
                
             i = i+1
-            
-            
-               
-            
-        
-        
-
-combat=Combat()
-
-combat.Fight()
     
+               
+          
+        
+# if __name__== '__main__':
+#     combat=Combat()
+#     combat.attaque()

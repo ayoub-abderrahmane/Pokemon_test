@@ -71,7 +71,9 @@ class Pokedex:
         ''' Méthode ajoute à l'aide d'un filtre les pokemons de type (Feu, Eau, Sol et Normal) 
             dans pokedex_joueur.
         '''
-       
+        
+
+
         while True:
             #Tirage aléatoire d'un pokemon dans le 
             self.pokemon_aleatoire()
@@ -96,8 +98,11 @@ class Pokedex:
                         #Conversion du dictionnaire en Json
                         json.dump(self.pokedex_joueur, f, indent=2)    
                                                 
-                        break         
+                        break
 
+    def supprimer_pokedex(self):
+        os.remove("pokedex_joueur.json")       
 
-pokedex=Pokedex()
+if __name__ == "__main__" :       
+    Pokedex()
 

@@ -1,15 +1,15 @@
 import json
 from Pokedex import Pokedex
 
-class Pokemon(Pokedex):
+class Pokemon():
     
-    def __init__(self):
-        super().__init__()        
-        super().ajout_pokemon_rencontrer() 
+    def __init__(self,data: dict):
+        # super().__init__()        
+        # super().ajout_pokemon_rencontrer() 
         
 
         self.pokedex_joueur = []
-        with open('pokedex_joueur.json', 'r', encoding='utf-8') as f:
+        with open('pokedex_joueur.son', 'r', encoding='utf-8') as f:
             self.pokedex_joueur = json.load(f)
        
                
@@ -44,7 +44,7 @@ class Pokemon(Pokedex):
                 super().ajout_pokemon_rencontrer()
             
             else:
-               
+                
                 self.nom_pokemon2 = self.pokedex_joueur[Total_pokedex]['name']
                 self.image_pokemon2 = self.pokedex_joueur[Total_pokedex]['image']
                 self.pv_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['HP']
@@ -53,9 +53,9 @@ class Pokemon(Pokedex):
                 self.defence_pokemon2 = self.pokedex_joueur[Total_pokedex]['stats']['defense']
                 break
     
-        
-pokemon=Pokemon()
-
+if __name__ == "__main__" :       
+    Pokemon() 
+# pokemon.pokemon2()
 
     
 
